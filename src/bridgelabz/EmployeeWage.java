@@ -1,5 +1,5 @@
 package bridgelabz;
-
+import java.util.Random;
 public class EmployeeWage {
 	public static void main(String[] args) {
 		System.out.println("Welcome Employewage");
@@ -12,5 +12,6 @@ public class EmployeeWage {
         {
             System.out.println("Employee is Absent");
         }
+        System.out.println("random_value :"+check);
 	}
 }
