@@ -9,21 +9,25 @@ public class EmployeeWage {
 		System.out.println("Welcome Employewage");
 		int emphrs = 0;
 		int empwage = 0;
-		int check = (int)Math.floor(Math.random() * 10)%2;
-		switch (check)
-		{
-        case I_P_T : System.out.println("Employee is present part time");
-            emphrs = 4;
-            break;
-        case I_F_T : System.out.println("Employee is  full time");
-            emphrs = 8;
-            break;
-        default : System.out.println("Employee is Absent");
-            emphrs = 0;
+		int totalempwage = 0;
+        int totalworkingdays = 0;
+        while (totalworkingdays < 20) {
+            int check = (int) Math.floor(Math.random() * 10) % 3;
+            switch (check) {
+                case I_P_T:
+                    emphrs = 4;
+                    break;
+                case I_F_T:
+                    emphrs = 8;
+                    break;
+                default:
+                    emphrs = 0;
+            }
+            empwage = W_P_H * emphrs;
+            totalempwage = totalempwage + empwage;
+            totalworkingdays++;
         }
-        empwage = W_P_H*emphrs;
-        System.out.println("Employee wage =" +empwage );
-            
+        System.out.println("Employee wage is " + totalempwage);
       
 	}
 }
