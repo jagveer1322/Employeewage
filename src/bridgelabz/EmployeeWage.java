@@ -12,6 +12,6 @@ public class EmployeeWage {
         {
             System.out.println("Employee is Absent");
         }
-        System.out.println("random_value :"+check);
+      
 	}
 }
