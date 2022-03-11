@@ -1,39 +1,57 @@
 package bridgelabz;
 import java.util.Random;
+
 public class EmployeeWage {
-	static final int W_P_H = 20;
-	static final int I_P_T = 1;
-	static final int I_F_T = 2;
-	static final int M_W_D = 20;
-    static final int M_W_H = 100;
-	public static void main(String[] args) {
-		System.out.println("Welcome Employewage");
-		int emphrs = 0;
-		int empwage = 0;
-		int totalempwage = 0;
-        int totalworkingdays = 0;
-        int totalworkinghours =0;
-        while (totalworkingdays < M_W_D && totalworkinghours <= M_W_H)
-        {
-            int check = (int) Math.floor(Math.random() * 10) % 3;
-            switch (check) {
-                case I_P_T:
-                    emphrs = 4;
-                    break;
-                case I_F_T:
-                    emphrs = 8;
-                    break;
-                default:
-                    emphrs = 0;
-            }
-            empwage = W_P_H * emphrs;
-            totalempwage = totalempwage + empwage;
-            totalworkinghours = totalworkinghours + emphrs;
-            totalworkingdays++;
+	static final int WAGE_PER_HOUR = 20;
+	static final int IS_PART_TIME = 1;
+	static final int IS_FULL_TIME = 2;
+	static final int MIN_WORKING_DAY = 20;
+    static final int MAX_WORKING_HOUR = 100;
+    static int emphrs;
+    static int check;
+    static int empwage = 0;
+	static int totalempwage = 0;
+    static int totalworkingdays = 0;
+    static int totalworkinghours =0;
+    
+   
+    void getcheck() {
+     check = (int)Math.floor(Math.random() *10)%3;
+    }
+    
+    void getemphours() {
+    	
+    	System.out.print("check v" +check); 
+           switch (check) {
+             case IS_PART_TIME:
+                 emphrs = 4;
+                 break;
+             case IS_FULL_TIME:
+                 emphrs = 8;
+                 break;
+             default:
+                 emphrs = 0;
+             }
         }
+    void calculatewage() {
+    	while(totalworkingdays < MIN_WORKING_DAY && totalworkinghours <= MAX_WORKING_HOUR)
+         {   
+ 	    	
+             empwage = WAGE_PER_HOUR * emphrs;
+             totalempwage = totalempwage + empwage;
+             totalworkinghours = totalworkinghours + emphrs;
+             totalworkingdays++;
+    }
+         
+    }
+    public static void main(String[] args) {
+		EmployeeWage obj = new EmployeeWage();
+		System.out.println("Welcome Employeewage");
+		obj.getcheck();
+     	obj.getemphours();
+		obj.calculatewage();
         System.out.println("Total Working Hours = " +totalworkinghours);
         System.out.println("Total Working Days = " +totalworkingdays);
         System.out.println("Total Employee wage is " +totalempwage);
-      
 	}
 }
