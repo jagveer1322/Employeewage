@@ -1,5 +1,7 @@
 package bridgelabz;
 
+import java.util.ArrayList;
+
 interface InterfaceEmployeeWage
 {
     public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs);
@@ -49,19 +51,17 @@ class EmployeeWage implements InterfaceEmployeeWage
     public static final int PART_TIME = 1;
     public static final int FULL_TIME = 2;
     // instance variables
-    int noOfCompanies, index;
-    CompanyEmpWage[] companies;
+    ArrayList<CompanyEmpWage> companies;
 
-    public EmployeeWage(int noOfCompanies)
+    public EmployeeWage()
     {
-        this.noOfCompanies = noOfCompanies;
-        companies = new CompanyEmpWage[noOfCompanies];
-        index = 0;
+        companies = new ArrayList<>();
     }
 
     public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
     {
-        companies[index++] = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
+        CompanyEmpWage company = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
+        companies.add(company);
     }
 
     int generateEmployeeType()
@@ -113,10 +113,11 @@ class EmployeeWage implements InterfaceEmployeeWage
 
     public static void main(String args[])
     {
-        EmployeeWage employeeWage = new EmployeeWage(3);
+        EmployeeWage employeeWage = new EmployeeWage();
         employeeWage.addCompany("Microsoft", 4, 30, 100);
         employeeWage.addCompany("Google", 5, 40, 170);
         employeeWage.addCompany("Apple", 9, 10, 70);
+        employeeWage.addCompany("Amazon", 19, 10, 150);
         employeeWage.calculateTotalWage();
     }
 }
